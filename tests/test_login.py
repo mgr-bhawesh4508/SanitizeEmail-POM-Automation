@@ -24,6 +24,7 @@ class TestLogin():
         with allure.step("Fillup login form"):
             self.login_page.enter_email(valid_data["email"])
             self.login_page.enter_password(valid_data["password"])
+            self.login_page.click_remember_me()
 
         with allure.step("Click login button"):
             self.login_page.click_login_button()
@@ -39,6 +40,7 @@ class TestLogin():
         with allure.step("Fillup login form"):
             self.login_page.enter_email(invalid_data["email"])
             self.login_page.enter_password(invalid_data["password"])
+            self.login_page.click_remember_me()
 
         with allure.step("Click login button"):
             self.login_page.click_login_button()

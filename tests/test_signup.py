@@ -37,7 +37,7 @@ class TestSignup():
             time.sleep(20)
             self.signup_page.enter_text(self.signup_page.OTP_INPUT, get_otp_from_email())
             self.signup_page.click_element(self.signup_page.VERIFY_OTP_BUTTON)
-            time.sleep(5)
+            self.signup_page.find_visible_element(self.signup_page.PROFILE_ICON)
 
         with allure.step("Assertion"):
             assert_true(self.signup_page.is_element_visible(self.signup_page.PROFILE_ICON),

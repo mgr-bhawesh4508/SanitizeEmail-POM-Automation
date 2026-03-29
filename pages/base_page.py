@@ -2,10 +2,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import os
-import time
 import allure
+import time
 
-class BasePage():
+class BasePage:
     def __init__(self, driver):
         # Store the driver instance
         self.driver = driver
@@ -20,13 +20,16 @@ class BasePage():
         # Wait until element is clickable
         return self.wait.until(EC.element_to_be_clickable(locator))
 
+    def find_visible_element(self, locator):
+        # Wait until element is visible
+        return self.wait.until(EC.visibility_of_element_located(locator))
+
     def click_element(self, locator):
         try:
             element = self.find_clickable_element(locator)
             element.click()
         except Exception as e:
-            element_name = locator.split("/"[-1]).replace("'", "").replace('"', '')
-            self.take_screenshot(f"Click_failure_{element_name}")
+            self.take_screenshot("Click_Failure")
             raise e
 
     def enter_text(self, locator, text):
@@ -35,27 +38,34 @@ class BasePage():
             element.clear()
             element.send_keys(text)
         except Exception as e:
-            element_name = locator.split("/"[-1]).replace("'", "").replace('"', '')
-            self.take_screenshot(f"Send_keys_failure_{element_name}")
+            self.take_screenshot("SendKeys_Failure")
             raise e
 
     def is_element_present(self, locator):
-            try:
-                self.find_element(locator)
-                return True
-            except TimeoutException:
-                return False
+        try:
+            self.find_element(locator)
+            return True
+        except TimeoutException:
+            return False
 
     def is_element_visible(self, locator):
-            try:
-                self.find_element(locator)
-                return True
-            except TimeoutException:
-                return False
+        try:
+            self.find_visible_element(locator)
+            return True
+        except TimeoutException:
+            return False
+
+    def is_element_clickable(self, locator):
+        try:
+            self.find_clickable_element(locator)
+            return True
+        except TimeoutException:
+            return False
 
     def get_element_text(self, locator):
-            element = self.find_element(locator)
-            return element.text
+        element = self.find_element(locator)
+        return element.text
+
 
     def take_screenshot(self, name):
         # Create Screenshots folder if not present

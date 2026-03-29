@@ -33,3 +33,16 @@ VALID_SIGNUP =[
         "password":"Magar@bhawesh4508"
     }
 ]
+EMAILS = [
+    {
+        "email": "bheweshmagar333@gmail.com",
+        "password": "Magar@bhawesh4508",
+        "emails_list": [
+            "greninja@gmail.com",
+            "ninja.com",
+            "hello@gmail.com",
+            ".test@email.com",
+            "pikachu@@gmail.com"
+        ]
+    }
+]

@@ -6,6 +6,7 @@ class LoginPage(BasePage):
     EMAIL_INPUT =(By.XPATH,"//input[@name='email']")
     PASSWORD_INPUT = (By.XPATH,"//input[@name='password']")
     FORGOT_PASSWORD = (By.XPATH,"//a[normalize-space()='Forgot Password?']")
+    REMEMBER_ME = (By.XPATH,"//label[normalize-space()='Remember Me']")
     LOGIN_BUTTON =  (By.XPATH,"//button[normalize-space()='Log In']")
     PROFILE_ICON =(By.XPATH,"//button[contains(@class,'rounded-full')]")
 
@@ -20,6 +21,9 @@ class LoginPage(BasePage):
 
     def enter_password(self, password):
         self.enter_text(self.PASSWORD_INPUT, password)
+
+    def click_remember_me(self):
+        self.click_element(self.REMEMBER_ME)
 
     def click_login_button(self):
         self.click_element(self.LOGIN_BUTTON)

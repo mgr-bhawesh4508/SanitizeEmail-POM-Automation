@@ -24,12 +24,12 @@ class TestListValidation:
             self.validation_page.enter_password(data["password"])
             self.validation_page.click_remember_me()
             self.validation_page.click_login_button()
-            self.validation_page.wait_for_element_visible(self.validation_page.PROFILE_ICON)
+            self.validation_page.find_visible_element(self.validation_page.PROFILE_ICON)
 
         with allure.step("Navigate to list validation"):
             self.validation_page.click_verify_email()
             self.validation_page.click_list_validation()
-            self.validation_page.wait_for_element_visible(self.validation_page.ADD_LIST)
+            self.validation_page.find_visible_element(self.validation_page.ADD_LIST)
 
         with allure.step("Click add list"):
             self.validation_page.click_add_list()
@@ -41,7 +41,7 @@ class TestListValidation:
             self.validation_page.click_element(self.validation_page.CHECKBOX)
             self.validation_page.click_element(self.validation_page.RUN_VALIDATION)
             time.sleep(30)
-            # self.validation_page.wait_for_element_visible(self.validation_page.SEARCH_BUTTON)
+            # self.validation_page.find_visible_element(self.validation_page.SEARCH_BUTTON)
 
         with allure.step("Assertion"):
             assert_true(

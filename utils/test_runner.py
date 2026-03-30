@@ -7,6 +7,9 @@ def create_driver():
     chrome_options = Options()
     chrome_options.add_argument("--start-maximized")
 
+    # # Add Incognito mode
+    # chrome_options.add_argument("--incognito")
+
     # Update this path to your actual chromedriver location
     service = Service(r"C:\Users\97155\Downloads\chromedriver-win64\chromedriver-win64\chromedriver.exe")
 
